@@ -1,26 +1,321 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>macOS Sierra 编译Android源代码 | 转身搁浅昨天</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Endevour To Be A Humanistic Programmer">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="macOS Sierra 编译Android源代码 | 转身搁浅昨天">
+    <meta name="twitter:description" content="Endevour To Be A Humanistic Programmer">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="macOS Sierra 编译Android源代码 | 转身搁浅昨天">
+    <meta property="og:description" content="Endevour To Be A Humanistic Programmer">
+
+    
+    <meta name="author" content="kelyvon">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://Kelyvon.github.io/2016/10/22/macOS-Sierra-编译Android源代码/"/>
+
+    
+      
+</head>
+
 <body class="home-template no-js">
-    <%- js("https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js") %>
-    <%- js("js/main.js") %>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
     <span class="mobile btn-mobile-menu">
         <i class="fa fa-list btn-mobile-menu__icon"></i>
         <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
     </span>
 
-    <%- partial('_partial/side-panel', {}) %>
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/my-background.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 转身搁浅昨天 的主页"><img src="/images/my-head-logo.jpg" width="80" alt="转身搁浅昨天 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 转身搁浅昨天">转身搁浅昨天</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">不忘初心，方得始终</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Endevour To Be A Humanistic Programmer</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Kelyvon" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <%- body %>
-            <%- partial('_partial/comments',{}) %>
-            <%- partial('_partial/footer', {}) %>
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-10-22T13:09:54.000Z" class="post-list__meta--date date">2016-10-22</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AOSP/">AOSP</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">macOS Sierra 编译Android源代码</h1>
+  </header>
+
+  <section class="post">
+    <p>​这两天捣鼓了一下Android 6.0.1源码的下载与编译，碰到了不少坑，但最后还是成功地编译出了一份源码，在这里记录一下自己的操作过程，第一次写博客，还希望大家体谅我的渣渣水平。</p>
+<h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><p>​        先交代一下自己的硬件情况:</p>
+<ul>
+<li><p>操作系统：macOS Sierra</p>
+</li>
+<li><p>CPU:双核四线程（后头有用）</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="创建一个大小写敏感的磁盘镜像"><a href="#创建一个大小写敏感的磁盘镜像" class="headerlink" title="创建一个大小写敏感的磁盘镜像"></a>创建一个大小写敏感的磁盘镜像</h4><p>因为我下载的是6.0 .1的源码，源码下载和编译完后需占用70多G的空间，电脑的存储空间不足，所以用的外接硬盘下载和编译源码。可通过磁盘工具将外接硬盘格式化为“Mac OS扩展（区分大小写，日志式）”的格式，请务必保证你的外接硬盘的分区的容量有80G的空间。</p>
+<p>若是电脑存储充足，可通过以下命令创建磁盘镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># hdiutil create -type SPARSE -fs &apos;Case-sensitive Journaled HFS+&apos; -size 80g ~/android.dmg</div></pre></td></tr></table></figure>
+<p>此时会在当前目录下创建一个后缀是.dmg或者.dmg.sparseimage的磁盘镜像，在macOS上是后者，如果之后需要扩展空间，可以通过以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># hdiutil resize -size &lt;new-size-you-want&gt;g ~/android.dmg.sparseimage</div></pre></td></tr></table></figure>
+<p>可以通过向~/.bash_profile文件中添加工具方法进行镜像的挂载与卸载</p>
+<ul>
+<li><p>挂载可通过在终端中执行mountAndroid,需在.bash_profile中添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># mount the android file image</div><div class="line">function mountAndroid &#123; hdiutil attach ~/android.dmg -mountpoint /Volumes/android; &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>​        <strong>注意：</strong>如果系统创建的镜像的后缀为.dmg.sparseimage,需要将上面函数中的~/android.dmg替换为     ~/android.dmg.sparseimage</p>
+<ul>
+<li><p>卸载镜像可通过执行umountAndroid,添加内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># unmount the android file image</div><div class="line">function umountAndroid() &#123; hdiutil detach /Volumes/android; &#125;</div></pre></td></tr></table></figure>
+<p> 需注意的地方与上头相同</p>
+<p>​</p>
+</li>
+</ul>
+<h4 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h4><p>可查看<a href="https://source.android.com/source/requirements.html" target="_blank" rel="external">要求</a>来查询不同版本的Android源码所需的Java版本,Android 6.0需安装Java 7,如果你的电脑中已经安装了其它版本的java，记得在你的~/.bash_profile中将JAVA_HOME设置为java 7,同时还需作以下操作：</p>
+<ul>
+<li><p>安装必须的软件包：</p>
+<ul>
+<li>Xcode，可从App Store安装最新的Xcode</li>
+<li>MacPorts,可从<a href="http://www.macports.org/install.php" target="_blank" rel="external">macports.org</a>安装MacPorts</li>
+</ul>
+<p>​</p>
+<p><strong>注意：</strong>确保/opt/local/bin在PATH环境变量中出现在/usr/bin之前，可在~/.bash_profile中添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=/opt/local/bin:$PATH</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>​      在安装完必须的软件包后，通过MacPorts获取make,git和GPG等软件包，命令如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install gmake libsdl git gnupg</div></pre></td></tr></table></figure>
+<p>​      如果电脑系统版本是OS X v10.4,还需安装bison，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install bison</div></pre></td></tr></table></figure>
+<p>​      如果需下载Android 4.0.x以及更早的源码，gmake 3.82中存在bug，需要另作处理，具体查看<a href="https://source.android.com/source/initializing.html" target="_blank" rel="external">这里</a></p>
+<ul>
+<li><p>设置最大打开文件数</p>
+<p>在Mac OS中，默认的最大文件打开数很低，高度的并行构建进程可能会超过这个限制，所以需要对其进行设置，可在~/.bash_profile中添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># set the number of open files to be 1024</div><div class="line">ulimit -S -n 1024</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h3 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h3><h4 id="安装Repo"><a href="#安装Repo" class="headerlink" title="安装Repo"></a>安装Repo</h4><ul>
+<li><p>确保在用户目录下有bin目录，并且在PATH环境变量中，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir ~/bin</div><div class="line">$ PATH=~/bin:$PATH</div></pre></td></tr></table></figure>
+</li>
+<li><p>下载Repo工具并确保其可执行，执行命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">$ chmod a+x ~/bin/repo</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="初始化Repo仓库"><a href="#初始化Repo仓库" class="headerlink" title="初始化Repo仓库"></a>初始化Repo仓库</h4><p>在安装好Repo后，进入硬盘下或你创建的磁盘镜像挂在的目录下，然后创建一个工作目录用于存放下载的Android源码和编译后的产物：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mkdir Android</div><div class="line">$ cd Android</div></pre></td></tr></table></figure>
+<p>可在初始化Repo仓库前通过git config命令配置你的真实姓名和邮件地址，这将可用于你之后代码的提交，配置命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;Your Name&quot;</div><div class="line">$ git config --global user.email &quot;you@example.com&quot;</div></pre></td></tr></table></figure>
+<p>通过repo init命令可以初始化仓库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ repo init -u https://android.googlesource.com/platform/manifest</div></pre></td></tr></table></figure>
+<p>上头不带参数的命令用于初始化master的仓库，可通过-b参数获取某一分支，这里我获取的是Android 6.0.1_r17分支，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r17</div></pre></td></tr></table></figure>
+<h4 id="同步源码"><a href="#同步源码" class="headerlink" title="同步源码"></a>同步源码</h4><p>接着即可开始同步源码，命令如下：</p>
+<p><code>$ repo sync</code></p>
+<p>同步源码会占用一个小时甚至更多的时间去完成，同步过程中可能会出现错误，如果是出现无法连接到gerrit.googlesource.com，则可修改~/bin/repo文件，找到REPO_URL这一行，修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">REPO_URL = &apos;https://gerrit-google.tuna.tsinghua.edu.cn/git-repo&apos;</div></pre></td></tr></table></figure>
+<p>相应的初始化仓库的命令变为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest</div></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-6.0.1_r17</div></pre></td></tr></table></figure>
+<p>然后重新repo sync,如果一开始硬盘容量不够或磁盘镜像分配的容量不足，sync过程中会出现no space left的错误，此时需给你的磁盘镜像调整容量大小。</p>
+<p>由于下载源码的时间太长，中途可能会出现链接断开的情况，repo同步虽然支持断点续传，但是不知道什么时候会断开，所以可以写一个脚本来开启同步，脚本文件名可设为get_android.sh,内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">#FileName  get_android.sh</div><div class="line">PATH=~/bin:$PATH</div><div class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-6.0.1_r17</div><div class="line">repo sync</div><div class="line">while [ $? = 1 ]; do</div><div class="line">echo &quot;================sync failed, re-sync again =====&quot;</div><div class="line">sleep 3</div><div class="line">repo sync</div><div class="line">done</div></pre></td></tr></table></figure>
+<p>该脚本来自于<a href="http://wl9739.github.io/2016/05/09/Android%E6%BA%90%E7%A0%81%E7%9A%84%E4%B8%8B%E8%BD%BD%E3%80%81%E7%BC%96%E8%AF%91%E4%B8%8E%E5%AF%BC%E5%85%A5%E5%88%B0Android-Studio/" target="_blank" rel="external">该作者</a>；</p>
+<p>然后可通过以下命令开启同步：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./get_android.sh</div></pre></td></tr></table></figure>
+<p>同步完后可删除该脚本文件</p>
+<h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><h4 id="初始化编译环境"><a href="#初始化编译环境" class="headerlink" title="初始化编译环境"></a>初始化编译环境</h4><p>执行命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ source build/envsetup.sh</div></pre></td></tr></table></figure>
+<h4 id="选择编译目标"><a href="#选择编译目标" class="headerlink" title="选择编译目标"></a>选择编译目标</h4><p>通过lunch命令设置编译目标,所谓的编译目标就是生成的镜像要运行在什么样的设备上，这里我尝试了几个编译目标编译的时候都出了点儿问题，有MacOSX sdk版本的问题，也有mac_version.mk文件配置的问题，最后我是设置编译目标为aosp_arm64-eng，且修改源码所在目录下的build/core/combo/mac_version文件中的mac_sdk_versions_supported :=  10.6 10.7 10.8 10.9为mac_sdk_versions_supported := 10.11，并从<a href="https://github.com/phracker/MacOSX-SDKs" target="_blank" rel="external">z这里</a>下载的MacOSX10.11.sdk，然后将其放到/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs下，最后执行命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ lunch aosp_arm64-eng</div></pre></td></tr></table></figure>
+<p>也可通过先执行<code>$ lunch</code>查看可选择的编译目标，然后选择某一编译目标:</p>
+<img src="/2016/10/22/macOS-Sierra-编译Android源代码/lunch.png" alt="lunch_command_display" title="lunch_command_display">
+<p><strong>注意：</strong>最新版本的Xcode的sdk版本为10.12，用该版本的sdk编译会出现错误，所以不要将mac_sdk_versions_supported设为10.12,如果需将编译出来的源码用于Nexus设备（包括模拟器），还需要另外处理一下驱动问题，可从<a href="https://developers.google.com/android/nexus/drivers" target="_blank" rel="external">这里</a>下载不同Nexus设备在不同Android版本下所需的驱动，下载完后需将解压出来的脚本在源码所在的根目录下执行，执行完成后会在源码目录下生成一个vendor目录。</p>
+<h4 id="编译源码-1"><a href="#编译源码-1" class="headerlink" title="编译源码"></a>编译源码</h4><p>执行<code>$ make -j4</code>启动编译，编译过程需要耗用长达几个小时的时间，这要看机子的配置情况，命令中-j后的数字4是我电脑的所有CPU的线程数的总和，假设你的电脑的所有CPU的线程数的总和为n,那么-j后可跟n或2n来启动编译。</p>
+<p>如果顺利编译成功的话，结果如下：</p>
+<img src="/2016/10/22/macOS-Sierra-编译Android源代码/make_success_pic.png" alt="make_success_display" title="make_success_display">
+<h4 id="运行模拟器"><a href="#运行模拟器" class="headerlink" title="运行模拟器"></a>运行模拟器</h4><p>在编译完成后，即可通过<code>emulator</code>命令打开模拟器</p>
+<p>若不是在编译完成后立马运行模拟器，则需通过以下命令打开模拟器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ source build/envsetup.sh</div><div class="line">$ lunch aosp_arm64-eng</div><div class="line">emulator</div></pre></td></tr></table></figure>
+<p>这里lunch后跟的编译目标需要设为你编译时选择的编译目标，如果编译过程没出现问题，则结果如下：</p>
+<img src="/2016/10/22/macOS-Sierra-编译Android源代码/emulator.png" alt="emulator_display" title="emulator_display">
+<h4 id="导入源码到Android-Studio"><a href="#导入源码到Android-Studio" class="headerlink" title="导入源码到Android Studio"></a>导入源码到Android Studio</h4><p>导入前还需先做一些处理，首先需要编译idegen模块，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mmm development/tools/idegen/</div></pre></td></tr></table></figure>
+<p>命令执行成功后会提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### make completed successfully (7 seconds) ####</div></pre></td></tr></table></figure>
+<blockquote>
+<p>m、mm、mmm命令可以编译单独的模块，但shell必须为bash shell</p>
+</blockquote>
+<p><strong>注意：</strong>如果命令执行失败，提示错误信息为<code>-bash: mmm: command not found</code>,那么需要现在源码目录下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ source build/envsetup.sh</div></pre></td></tr></table></figure>
+<p> 然后执行一下命令以在源码根目录下生成对应的android.ipr和android.iml IDEA工程配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ development/tools/idegen/idegen.sh</div></pre></td></tr></table></figure>
+<p>执行成功后可看到终端提示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Read excludes: 30ms</div><div class="line">Traversed tree: 230917ms</div></pre></td></tr></table></figure>
+<p>该命令的执行时间视机子配置情况而定</p>
+<p>最后使用Android Studio,选择<code>Open an existing Android Studio Project</code>, 然后找到源码所在目录，选中android.ipr，最后就是等待Android Studio索引完成了，打开过程中会提示源码所在目录的文件系统大小写敏感与IDE不匹配，直接忽略提示。</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/05/24/编译Android内核/" title="编译Android内核">编译Android内核</a></h2>
+                <p class="excerpt">
+                
+                最近尝试编译了一下Android内核源码，不知道为什么编译出来的内核无法启动之前编译的Android  6.0.1_r17的镜像，搜索了很久，但仍是无解，所以重新选择了编译Android 7.1.1_r17这个源码分支，然后再根据启动的模拟器的内核版本，选择了相应的内核分支进行了编译，最终可以由编译
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-05-24T07:36:20.000Z" class="post-list__meta--date date">2017-05-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AOSP/">AOSP</a>
+</span><a class="btn-border-small" href="/2017/05/24/编译Android内核/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+        
+     
+   
+   
+  
+</section>
+
+            
+<section class="post-comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="http://Kelyvon.github.io/2016/10/22/macOS-Sierra-编译Android源代码/" data-title="macOS Sierra 编译Android源代码" data-url="http://Kelyvon.github.io/2016/10/22/macOS-Sierra-编译Android源代码/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"Kelyvon"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
         </div>
     </div>
 
 
 
-    <%- partial('_partial/google_analytics') %>
-    <%- partial('_partial/baidu_tongji') %>
+     
+    
+
+
     <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 
     </script>
