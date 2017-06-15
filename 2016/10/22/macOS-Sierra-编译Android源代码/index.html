@@ -188,7 +188,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install gmake libsdl git gnupg</div></pre></td></tr></table></figure>
 <p>如果电脑系统版本是OS X v10.4,还需安装bison，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install bison</div></pre></td></tr></table></figure>
-<p>​ 如果需下载Android 4.0.x以及更早的源码，gmake 3.82中存在bug，需要另作处理，具体查看<a href="https://source.android.com/source/initializing.html" target="_blank" rel="external">这里</a></p>
+<p>​如果需下载Android 4.0.x以及更早的源码，gmake 3.82中存在bug，需要另作处理，具体查看<a href="https://source.android.com/source/initializing.html" target="_blank" rel="external">这里</a></p>
 <ul>
 <li><p>设置最大打开文件数</p>
 <p>在Mac OS中，默认的最大文件打开数很低，高度的并行构建进程可能会超过这个限制，所以需要对其进行设置，可在~/.bash_profile中添加如下内容：</p>
@@ -276,7 +276,7 @@
                 <h2 class="post-list__post-title post-title"><a href="/2017/05/24/编译Android内核/" title="编译Android内核">编译Android内核</a></h2>
                 <p class="excerpt">
                 
-                ​    最近尝试编译了一下Android内核源码，不知道为什么编译出来的内核无法启动之前编译的Android  6.0.1_r17的镜像，搜索了很久，但仍是无解，所以重新选择了编译Android 7.1.1_r13这个源码分支，然后再根据启动的模拟器的内核版本，选择了相应的内核分支进行了编译，最终
+                最近尝试编译了一下Android内核源码，不知道为什么编译出来的内核无法启动之前编译的Android  6.0.1_r17的镜像，搜索了很久，但仍是无解，所以重新选择了编译Android 7.1.1_r13这个源码分支，然后再根据启动的模拟器的内核版本，选择了相应的内核分支进行了编译，最终可以由编译
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2017-05-24T07:36:20.000Z" class="post-list__meta--date date">2017-05-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
