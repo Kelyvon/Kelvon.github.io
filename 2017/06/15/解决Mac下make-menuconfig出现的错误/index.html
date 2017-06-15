@@ -39,7 +39,7 @@
     
 
     
-    <meta name="keywords" content="Mac,make menuconfig,Android,Linux,Java,AOSP">
+    <meta name="keywords" content="Mac,menuconfig,Android,Linux,Java,AOSP">
     
 
 
@@ -159,12 +159,12 @@
 <li>当在配置界面进行了一系列配置并保存配置后，系统会更新Linux根目录下的.config文件，同时将所有选项以宏的形式保存在Linux内核的include/generated/autoconf.h文件中，内核中的源代码会包含该头文件，并根据宏的定义情况进行条件编译。</li>
 </ol>
 <h4 id="编译关系的建立"><a href="#编译关系的建立" class="headerlink" title="编译关系的建立"></a>编译关系的建立</h4><p>编译关系是根据Makefile文件建立起来的，当需要编译一个文件时，需要修改对应的Makefile编译脚本文件。例如有以下Makefile文件：<br></p>
-<p>obj-$(CONFIG_FREG)+=freg.o</p>
+<p>obj-$(CONFIG_FREG)+=freg.o<br></p>
 <p>当我们选择是否需要编译freg.c这个文件时，会根据Makefile文件中的CONFIG_FREG来决定是否编译此文件，CONFIG<em>FREG为上小节中介绍到的生成的宏，该宏的名称来自于相应的Kconfig编译选项文件中的第一条语句config  FREG,系统在生成该宏时会自动加上CONFIG</em>前缀。当CONFIG_FREG为y或m时会进行编译，否则不进行编译。Makefile文件中+=右边的.o文件的文件名必须与需要编译的.c文件的文件名相同。</p>
 <h2 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ld: symbol(s) not found for architecture x86_64</div><div class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</div></pre></td></tr></table></figure>
 <p>在编译Linux内核之前，使用图形界面来进行配置最为直观与方便，所以需要使用make menuconfig命令，实际上该命令是使用mconf这个工具去解析config文件里的描述信息，进而转换为图形界面。<br><br></p>
 <p>在第一次执行make menuconfig时，需要先生成mconf这个工具，在预编译Linux内核scripts/kconfig/mconf.c生成scripts/kconfig/mconf.o之后的连接阶段，需要ldflags参数给出所需要连接的库的位置(在这里为后缀为.a、.so、.dylib的ncursesw、ncurses、curses库，因为配置图形界面需要使用方向键来选择选项，所以需要用到ncurses库，如果Mac上没有该库，可以通过命令：brew install homebrew/ncurses来安装 )，而生成ldflags参数的脚本为Linux内核scripts/kconfig/lxdialog/check-lxdialog.sh。<br><br></p>
-<p>上面报错的原因在于Mac系统下ncursesw、ncurses、curses这些库文件的位置不能通过check-lxdialog.sh里的脚本命令得到，所以生成的ldflags不对，进而无法生成mconf工具。<br><br><br></p>
+<p>上面报错的原因在于Mac系统下ncursesw、ncurses、curses这些库文件的位置不能通过check-lxdialog.sh里的脚本命令得到，所以生成的ldflags不对，进而无法生成mconf工具。<br><br></p>
 <p>该错误的解决办法为：<br></p>
 <p>打开Linux内核scripts/kconfig/lxdialog/check-lxdialog.sh,将ldflags()修改为以下内容：<br></p>
 <img src="/2017/06/15/解决Mac下make-menuconfig出现的错误/improve_lxdialog.png" alt="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface" title="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface">
