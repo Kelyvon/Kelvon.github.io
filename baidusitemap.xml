@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://kelyvon.github.io/2017/05/24/%E7%BC%96%E8%AF%91Android%E5%86%85%E6%A0%B8/</loc>
+    <lastmod>2017-06-15T08:28:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>编译Android内核</title>
+        <pubTime>2017-05-24T07:36:20.000Z</pubTime>
+        
+        <tag>AOSP</tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="https://kelyvon.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://kelyvon.github.io/2016/10/22/macOS-Sierra-%E7%BC%96%E8%AF%91Android%E6%BA%90%E4%BB%A3%E7%A0%81/</loc>
     <lastmod>2017-06-15T08:12:59.000Z</lastmod>
     <data>
@@ -35,26 +55,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://kelyvon.github.io/2017/05/24/%E7%BC%96%E8%AF%91Android%E5%86%85%E6%A0%B8/</loc>
-    <lastmod>2017-06-15T07:11:01.000Z</lastmod>
-    <data>
-        <display>
-        <title>编译Android内核</title>
-        <pubTime>2017-05-24T07:36:20.000Z</pubTime>
-        
-        <tag>AOSP</tag>
-         
-         
-           
-             
-              <breadCrumb title="Android" url="https://kelyvon.github.io/categories/Android/"/>
-          
         </display>
     </data>
     </url>
