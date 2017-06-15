@@ -34,7 +34,7 @@
     <meta name="generator" content="hexo"/>
     
 
-    <link rel="canonical" href="https://kelyvon.github.io/2017/06/15/解决Mac下make-memuconfig出现的错误/"/>
+    <link rel="canonical" href="https://kelyvon.github.io/2017/06/15/解决Mac下make-menuconfig出现的错误/"/>
 
     
 
@@ -167,7 +167,7 @@
 <p>上面报错的原因在于Mac系统下ncursesw、ncurses、curses这些库文件的位置不能通过check-lxdialog.sh里的脚本命令得到，所以生成的ldflags不对，进而无法生成mconf工具。<br></p>
 <p>该错误的解决办法为：<br></p>
 <p>打开Linux内核scripts/kconfig/lxdialog/check-lxdialog.sh,将ldflags()修改为以下内容：<br></p>
-<img src="/2017/06/15/解决Mac下make-memuconfig出现的错误/improve_lxdialog.png" alt="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface" title="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface">
+<img src="/2017/06/15/解决Mac下make-menuconfig出现的错误/improve_lxdialog.png" alt="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface" title="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface">
 
   </section>
 
@@ -183,7 +183,7 @@
                 <h2 class="post-list__post-title post-title"><a href="/2017/05/24/编译Android内核/" title="编译Android内核">编译Android内核</a></h2>
                 <p class="excerpt">
                 
-                最近尝试编译了一下Android内核源码，不知道为什么编译出来的内核无法启动之前编译的Android  6.0.1_r17的镜像，搜索了很久，但仍是无解，所以重新选择了编译Android 7.1.1_r17这个源码分支，然后再根据启动的模拟器的内核版本，选择了相应的内核分支进行了编译，最终可以由编译
+                最近尝试编译了一下Android内核源码，不知道为什么编译出来的内核无法启动之前编译的Android  6.0.1_r17的镜像，搜索了很久，但仍是无解，所以重新选择了编译Android 7.1.1_r13这个源码分支，然后再根据启动的模拟器的内核版本，选择了相应的内核分支进行了编译，最终可以由编译
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2017-05-24T07:36:20.000Z" class="post-list__meta--date date">2017-05-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -204,9 +204,9 @@
   <script type="text/javascript">
       var disqus_shortname = 'kelyvon-github-io';
       
-  var disqus_identifier = '/2017/06/15/解决Mac下make-memuconfig出现的错误/';
+  var disqus_identifier = '/2017/06/15/解决Mac下make-menuconfig出现的错误/';
   var disqus_title = '解决Mac下make memuconfig出现的错误';
-  var disqus_url = 'https://kelyvon.github.io/2017/06/15/解决Mac下make-memuconfig出现的错误/';
+  var disqus_url = 'https://kelyvon.github.io/2017/06/15/解决Mac下make-menuconfig出现的错误/';
   
 
       /* * * DON'T EDIT BELOW THIS LINE * * */
