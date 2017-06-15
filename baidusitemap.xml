@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>https://kelyvon.github.io/2016/10/22/macOS-Sierra-%E7%BC%96%E8%AF%91Android%E6%BA%90%E4%BB%A3%E7%A0%81/</loc>
-    <lastmod>2017-06-03T06:07:22.000Z</lastmod>
+    <loc>https://kelyvon.github.io/2017/05/24/%E7%BC%96%E8%AF%91Android%E5%86%85%E6%A0%B8/</loc>
+    <lastmod>2017-06-15T07:06:46.000Z</lastmod>
     <data>
         <display>
-        <title>macOS Sierra 编译Android源代码</title>
-        <pubTime>2016-10-22T13:09:54.000Z</pubTime>
+        <title>编译Android内核</title>
+        <pubTime>2017-05-24T07:36:20.000Z</pubTime>
         
         <tag>AOSP</tag>
          
@@ -24,12 +24,29 @@
 
     
   <url>
-    <loc>https://kelyvon.github.io/2017/05/24/%E7%BC%96%E8%AF%91Android%E5%86%85%E6%A0%B8/</loc>
-    <lastmod>2017-05-24T14:56:36.000Z</lastmod>
+    <loc>https://kelyvon.github.io/2017/06/15/%E8%A7%A3%E5%86%B3Mac%E4%B8%8Bmake-memuconfig%E5%87%BA%E7%8E%B0%E7%9A%84%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2017-06-15T06:18:47.000Z</lastmod>
     <data>
         <display>
-        <title>编译Android内核</title>
-        <pubTime>2017-05-24T07:36:20.000Z</pubTime>
+        <title>解决Mac下make memuconfig出现的错误</title>
+        <pubTime>2017-06-15T01:29:39.000Z</pubTime>
+        
+        <tag>AOSP</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://kelyvon.github.io/2016/10/22/macOS-Sierra-%E7%BC%96%E8%AF%91Android%E6%BA%90%E4%BB%A3%E7%A0%81/</loc>
+    <lastmod>2017-06-03T06:07:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>macOS Sierra 编译Android源代码</title>
+        <pubTime>2016-10-22T13:09:54.000Z</pubTime>
         
         <tag>AOSP</tag>
          

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="google-site-verification" content="boc_3OIKWlDd2E9aE6ZnFaUDQqUz1T-RGcQiDqk6i4s" />
+    
+    <title>解决Mac下make memuconfig出现的错误 | 转身搁浅昨天</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Endevour To Be A Humanistic Programmer">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="解决Mac下make memuconfig出现的错误 | 转身搁浅昨天">
+    <meta name="twitter:description" content="Endevour To Be A Humanistic Programmer">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="解决Mac下make memuconfig出现的错误 | 转身搁浅昨天">
+    <meta property="og:description" content="Endevour To Be A Humanistic Programmer">
+
+    
+    <meta name="author" content="kelyvon">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="https://kelyvon.github.io/2017/06/15/解决Mac下make-memuconfig出现的错误/"/>
+
+    
+
+    
+    <meta name="keywords" content="Mac,make menuconfig,Android,Linux,Java,AOSP">
+    
+
+
+
+</head>
+
+<body class="home-template no-js">
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/my-background.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 转身搁浅昨天 的主页"><img src="/images/my-head-logo.jpg" width="80" alt="转身搁浅昨天 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for 转身搁浅昨天">转身搁浅昨天</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">不忘初心，方得始终</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">Endevour To Be A Humanistic Programmer</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="">时光机</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/Kelyvon" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-06-15T01:29:39.000Z" class="post-list__meta--date date">2017-06-15</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AOSP/">AOSP</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">解决Mac下make memuconfig出现的错误</h1>
+  </header>
+
+  <section class="post">
+    <p>在编译自己编写的Linux内核驱动模块之前，需要通过make menuconfig命令来配置内核驱动模块的编译方式，在Mac下该命令调用图形界面以配置编译方式时可能会出现一些错误，这里做一下相关错误记录与解决办法。<br></p>
+<p>借着这个机会，顺便先介绍一下Linux内核的配置机制。</p>
+<h5 id="Linux内核配置系统组成"><a href="#Linux内核配置系统组成" class="headerlink" title="Linux内核配置系统组成"></a>Linux内核配置系统组成</h5><p>Linux内核配置系统由三个部分组成，分别是：</p>
+<ol>
+<li>Makefile: 分布在Linux内核源代码根目录及各层目录中，定义Linux内核的编译规则。</li>
+<li>配置文件(.config、Kconfig等)：给用户提供配置选择的功能</li>
+<li>配置工具：包括配置命令解释器(对配置脚本中使用的配置命令进行解释)和配置用户界面(提供基于字符界面、基于Ncurses图形界面以及基于Xwindows图形界面的用户配置界面，分别对应于:make config、make menuconfig、make xconfig)。</li>
+</ol>
+<h5 id="make-menuconfig过程"><a href="#make-menuconfig过程" class="headerlink" title="make menuconfig过程"></a>make menuconfig过程</h5><ol>
+<li>根据Linux内核根目录下的Makefile文件中设置的ARCH环境变量决定读取arch/$ARCH/目录下的Config文件生成整个配置界面选项。</li>
+<li>默认的配置选项来自于arch/$ARCH/configs/目录下的某一文件，在编译Android内核时，曾使用过make goldfish_armv7_defconfig命令，该命令实际就是根据arch/$ARCH/configs/goldfish_armv7_defconfig(需要在执行编译前根据开发版的类型从configs文件夹中选择一个与开发板最接近的系列)来生成默认配置选项，并将其保存为Linux内核根目录下的.config文件，默认选项配置来自于各个文件夹下的Kconfig编译选项文件。</li>
+<li>根据Linux根目录下的.config文件生成配置界面。</li>
+<li>当在配置界面进行了一系列配置并保存配置后，系统会更新Linux根目录下的.config文件，同时将所有选项以宏的形式保存在Linux内核的include/generated/autoconf.h文件中，内核中的源代码会包含该头文件，并根据宏的定义情况进行条件编译。</li>
+</ol>
+<h5 id="编译关系的建立"><a href="#编译关系的建立" class="headerlink" title="编译关系的建立"></a>编译关系的建立</h5><p>编译关系是根据Makefile文件建立起来的，当需要编译一个文件时，需要修改对应的Makefile编译脚本文件。例如有以下Makefile文件：<br></p>
+<p>obj-$(CONFIG_FREG)+=freg.o</p>
+<p>当我们选择是否需要编译freg.c这个文件时，会根据Makefile文件中的CONFIG_FREG来决定是否编译此文件，CONFIG<em>FREG为上小节中介绍到的生成的宏，该宏的名称来自于相应的Kconfig编译选项文件中的第一条语句config  FREG,系统在生成该宏时会自动加上CONFIG</em>前缀。当CONFIG_FREG为y或m时会进行编译，否则不进行编译。Makefile文件中+=右边的.o文件的文件名必须与需要编译的.c文件的文件名相同。</p>
+<h2 id="错误一"><a href="#错误一" class="headerlink" title="错误一"></a>错误一</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ld: symbol(s) not found for architecture x86_64</div><div class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</div></pre></td></tr></table></figure>
+<p>在编译Linux内核之前，使用图形界面来进行配置最为直观与方便，所以需要使用make menuconfig命令，实际上该命令是使用mconf这个工具去解析config文件里的描述信息，进而转换为图形界面。<br></p>
+<p>在第一次执行make menuconfig时，需要先生成mconf这个工具，在预编译Linux内核scripts/kconfig/mconf.c生成scripts/kconfig/mconf.o之后的连接阶段，需要ldflags参数给出所需要连接的库的位置(在这里为后缀为.a、.so、.dylib的ncursesw、ncurses、curses库，因为配置图形界面需要使用方向键来选择选项，所以需要用到ncurses库，如果Mac上没有该库，可以通过命令：brew install homebrew/ncurses来安装 )，而生成ldflags参数的脚本为Linux内核scripts/kconfig/lxdialog/check-lxdialog.sh。<br></p>
+<p>上面报错的原因在于Mac系统下ncursesw、ncurses、curses这些库文件的位置不能通过check-lxdialog.sh里的脚本命令得到，所以生成的ldflags不对，进而无法生成mconf工具。<br></p>
+<p>该错误的解决办法为：<br></p>
+<p>打开Linux内核scripts/kconfig/lxdialog/check-lxdialog.sh,将ldflags()修改为以下内容：<br></p>
+<img src="/2017/06/15/解决Mac下make-memuconfig出现的错误/improve_lxdialog.png" alt="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface" title="improve_lxdialog % } 修改完后，再次执行make menuconfig，则可成功打开图形配置界面</br> {% asset_img configure_interface.png show_configuer_interface">
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/05/24/编译Android内核/" title="编译Android内核">编译Android内核</a></h2>
+                <p class="excerpt">
+                
+                最近尝试编译了一下Android内核源码，不知道为什么编译出来的内核无法启动之前编译的Android  6.0.1_r17的镜像，搜索了很久，但仍是无解，所以重新选择了编译Android 7.1.1_r17这个源码分支，然后再根据启动的模拟器的内核版本，选择了相应的内核分支进行了编译，最终可以由编译
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-05-24T07:36:20.000Z" class="post-list__meta--date date">2017-05-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/AOSP/">AOSP</a>
+</span><a class="btn-border-small" href="/2017/05/24/编译Android内核/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            
+<section class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'kelyvon-github-io';
+      
+  var disqus_identifier = '/2017/06/15/解决Mac下make-memuconfig出现的错误/';
+  var disqus_title = '解决Mac下make memuconfig出现的错误';
+  var disqus_url = 'https://kelyvon.github.io/2017/06/15/解决Mac下make-memuconfig出现的错误/';
+  
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          //dsq.src = '/js/embed.js';
+          //将disqus使用https协议将大大提高显示速度
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          //dsq.src = 'https://a.disquscdn.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+        </div>
+    </div>
+
+
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+
+    </script>
+
+</body>
+</html>
